@@ -1,12 +1,11 @@
-package renataschreiner.POC1;
+package renataschreiner.POC1.model.entity;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table (name = "TB_ADRESS")
 
-public class Adress {
+public class Address {
 
     private Integer cep;
     private String rua;
@@ -16,7 +15,7 @@ public class Adress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public Adress() {
+    public Address() {
     }
 
     public Integer getCep() {
