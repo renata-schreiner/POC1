@@ -4,6 +4,6 @@ import renataschreiner.POC1.model.entity.Customer;
 
 public interface CustomerService {
 
-    void newCustomer(Customer customer);
+    Customer newCustomer(Customer customer);
 
 }

@@ -1,10 +1,9 @@
 package renataschreiner.POC1.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import renataschreiner.POC1.model.entity.Customer;
-import renataschreiner.POC1.repositories.CustomerRepository;
 import renataschreiner.POC1.service.impl.CustomerServiceImpl;
 
 import java.util.Optional;
@@ -13,9 +12,6 @@ import java.util.Optional;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    @Autowired
-    private CustomerRepository customerRepository;
-
     private final CustomerServiceImpl customerService;
 
     public CustomerController(CustomerServiceImpl customerService) {
@@ -23,9 +19,9 @@ public class CustomerController {
     }
 
     @PostMapping
-    public Customer newCustomer(@RequestBody Customer customer) {
-        customerService.newCustomer(customer);
-        return customer;
+    public ResponseEntity<Customer> newCustomer(@RequestBody Customer customer) {
+        Customer newCustomer = customerService.newCustomer(customer);
+        return new ResponseEntity<Customer>(newCustomer, HttpStatus.CREATED);
     }
 
     @DeleteMapping(path = "/{id}")
