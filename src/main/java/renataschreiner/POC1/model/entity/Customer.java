@@ -17,18 +17,18 @@ public class Customer {
 
     private String cpf_cnpj;
 
-    private boolean isPessoaFisica;
+    private String type;
 
     public Customer() {
     }
 
-    public Customer(Long id, String name, Integer age, String email, String cpf_cnpj, Boolean isPessoaFisica) {
+    public Customer(Long id, String name, Integer age, String email, String cpf_cnpj, String type) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
         this.cpf_cnpj = cpf_cnpj;
-        this.isPessoaFisica = isPessoaFisica;
+        this.type = type;
     }
 
     public Long getId() {
@@ -71,12 +71,11 @@ public class Customer {
         this.cpf_cnpj = cpf_cnpj;
     }
 
-    public Boolean getPessoaFisica() {
-        return isPessoaFisica;
+    public String getType() {
+        return type;
     }
 
-    public void setPessoaFisica(boolean pessoaFisica) {
-        isPessoaFisica = pessoaFisica;
-
+    public void setType(String pessoaFisica) {
+        this.type = pessoaFisica;
     }
 }

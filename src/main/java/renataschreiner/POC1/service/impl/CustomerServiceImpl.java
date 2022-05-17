@@ -5,6 +5,7 @@ import renataschreiner.POC1.model.entity.Customer;
 import renataschreiner.POC1.repositories.CustomerRepository;
 import renataschreiner.POC1.service.CustomerService;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -16,8 +17,13 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerRepository = customerRepository;
     }
 
+
     @Override
     public Customer newCustomer(final Customer customer) {
+        if (Objects.equals(customer.getCpf_cnpj().length(), 11)) {
+            customer.setType("Pessoa Física");
+        }else
+            customer.setType("Pessoa Jurídica");
         return customerRepository.save(customer);
     }
 

@@ -21,7 +21,7 @@ public class CustomerController {
     @PostMapping
     public ResponseEntity<Customer> newCustomer(@RequestBody Customer customer) {
         Customer newCustomer = customerService.newCustomer(customer);
-        return new ResponseEntity<Customer>(newCustomer, HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newCustomer);
     }
 
     @DeleteMapping(path = "/{id}")
