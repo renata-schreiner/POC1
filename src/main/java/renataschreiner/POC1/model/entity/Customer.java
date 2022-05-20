@@ -1,6 +1,8 @@
 package renataschreiner.POC1.model.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "TB_CUSTOMER")
@@ -19,10 +21,14 @@ public class Customer {
 
     private String type;
 
+
+    @OneToMany(mappedBy = "customer")
+    private List<Address> addresses = new ArrayList<>();
+
     public Customer() {
     }
 
-    public Customer(Long id, String name, Integer age, String email, String cpf_cnpj, String type) {
+    public Customer(Long id, String name, Integer age, String email, String cpf_cnpj, String type, List<Address> adresses) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -75,7 +81,11 @@ public class Customer {
         return type;
     }
 
-    public void setType(String pessoaFisica) {
-        this.type = pessoaFisica;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
     }
 }
