@@ -1,5 +1,7 @@
 package renataschreiner.POC1.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class Address {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "customer_id")
+    @JsonIgnore
     private Customer customer;
 
     public Address() {
