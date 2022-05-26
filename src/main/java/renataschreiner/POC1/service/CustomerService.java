@@ -8,10 +8,10 @@ public interface CustomerService {
 
     Customer newCustomer(Customer customer);
 
-    public void deleteCustomer(final Long id);
+    void deleteCustomer(final Long id);
 
-    public Iterable<Customer> getCustomer();
+    Iterable<Customer> getCustomer();
 
-    public Optional<Customer> getCustomerById(Long id);
+    Optional<Customer> getCustomerById(Long id);
 
 }

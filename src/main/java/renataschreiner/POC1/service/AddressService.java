@@ -9,9 +9,9 @@ public interface AddressService {
     Address newAddress(Address address);
     void deleteAddress(final Long id);
 
-    public Iterable<Address> getAddress();
+    Iterable<Address> getAddress();
 
-    public Optional<Address> getAddressById(Long id);
+    Optional<Address> getAddressById(Long id);
 
 
 }

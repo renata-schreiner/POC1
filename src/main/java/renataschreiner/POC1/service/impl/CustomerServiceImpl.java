@@ -22,19 +22,18 @@ public class CustomerServiceImpl implements CustomerService {
         this.addressRepository = addressRepository;
     }
 
-
     @Override
     public Customer newCustomer(final Customer customer) {
-        if (Objects.equals(customer.getCpf_cnpj().length(), 11)) {
-            customer.setType("Pessoa Física");
-        } else
-            customer.setType("Pessoa Jurídica");
 
+        Boolean isFisico = Objects.equals(customer.getCpf_cnpj().length(), 11);
+        String type = isFisico ? "Pessoa Física" : "Pessoa Jurídica";
+        customer.setType(type);
+        customerRepository.save(customer);
 
         final Address address = customer.getAddresses().get(0);
-        addressRepository.save(address);
-        customerRepository.save(customer);
-        return customer;
+        address.setCustomer(customer);
+        return customerRepository.save(customer);
+
     }
 
     public void deleteCustomer(final Long id) {
@@ -51,4 +50,3 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 }
-
