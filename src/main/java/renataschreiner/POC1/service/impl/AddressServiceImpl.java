@@ -32,5 +32,5 @@ public class AddressServiceImpl implements AddressService {
     public Optional<Address> getAddressById(Long id) {
         return addressRepository.findById(id);
     }
-    
+
 }

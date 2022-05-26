@@ -1,5 +1,7 @@
 package renataschreiner.POC1.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,28 +9,38 @@ import javax.persistence.*;
 
 public class Address {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Integer cep;
-
     private String estado;
-
     private String cidade;
     private String rua;
     private Integer numero;
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "customer_id")
+    @JsonIgnore
+    private Customer customer;
 
     public Address() {
     }
 
-    public Address(Integer cep, String estado, String cidade, String rua, Integer numero, Long id) {
+    public Address(Long id, Integer cep, String estado, String cidade, String rua, Integer numero, Customer customer) {
+        this.id = id;
         this.cep = cep;
         this.estado = estado;
         this.cidade = cidade;
         this.rua = rua;
         this.numero = numero;
+        this.customer = customer;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -72,11 +84,11 @@ public class Address {
         this.numero = numero;
     }
 
-    public Long getId() {
-        return id;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }
