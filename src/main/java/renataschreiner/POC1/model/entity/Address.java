@@ -18,6 +18,7 @@ public class Address {
     private String rua;
     private Integer numero;
 
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "customer_id")
     @JsonIgnore
