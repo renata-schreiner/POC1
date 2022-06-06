@@ -27,7 +27,7 @@ public class Address {
     public Address() {
     }
 
-    public Address(Long id, Integer cep, String estado, String cidade, String rua, Integer numero, Customer customer) {
+    public Address(Long id, Integer cep, String estado, String cidade, String rua, Integer numero,  Customer customer) {
         this.id = id;
         this.cep = cep;
         this.estado = estado;

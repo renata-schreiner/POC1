@@ -2,7 +2,9 @@ package renataschreiner.POC1.service.impl;
 
 import org.springframework.stereotype.Service;
 import renataschreiner.POC1.model.entity.Address;
+import renataschreiner.POC1.model.entity.Customer;
 import renataschreiner.POC1.repositories.AddressRepository;
+import renataschreiner.POC1.repositories.CustomerRepository;
 import renataschreiner.POC1.service.AddressService;
 
 import java.util.Optional;
@@ -13,14 +15,25 @@ public class AddressServiceImpl implements AddressService {
 
     private final AddressRepository addressRepository;
 
-    public AddressServiceImpl(AddressRepository addressRepository) {
+    private final CustomerRepository customerRepository;
+
+    public AddressServiceImpl(AddressRepository addressRepository, CustomerRepository customerRepository){
         this.addressRepository = addressRepository;
+        this.customerRepository = customerRepository;
     }
 
     @Override
     public Address newAddress(final Address address) {
         return addressRepository.save(address);
     }
+
+    public Address newAddressWithCustomerId (Address address, Long id){
+        Customer customer = customerRepository.getById(id);
+        address.setCustomer(customer);
+        addressRepository.save(address);
+        return address;
+    }
+
 
     public void deleteAddress(final Long id) {
         addressRepository.deleteById(id);

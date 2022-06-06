@@ -30,15 +30,10 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setType(type);
         customerRepository.save(customer);
 
-        for (int i = 0; i < customer.getAddresses().size(); i++) {
-
-            final Address address = customer.getAddresses().get(i);
-            address.setCustomer(customer);
-            addressRepository.save(address);
-        }
-
-        return customerRepository.save(customer);
-
+        final Address address = customer.getAddresses().get(0);
+        address.setCustomer(customer);
+        addressRepository.save(address);
+        return customer;
     }
     public void deleteCustomer(final Long id) {
         customerRepository.deleteById(id);

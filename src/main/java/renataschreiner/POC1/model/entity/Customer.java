@@ -1,11 +1,9 @@
 package renataschreiner.POC1.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 @Entity
 @Table(name = "TB_CUSTOMER")
