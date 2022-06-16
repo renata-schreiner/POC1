@@ -29,13 +29,14 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Long id, String name, Integer age, String email, String cpf_cnpj, String type, List<Address> adresses) {
+    public Customer(Long id, String name, Integer age, String email, String cpf_cnpj, String type, List<Address> addresses) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
         this.cpf_cnpj = cpf_cnpj;
         this.type = type;
+        this.addresses = addresses;
     }
 
     public Long getId() {
@@ -88,5 +89,9 @@ public class Customer {
 
     public List<Address> getAddresses() {
         return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 }

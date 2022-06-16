@@ -32,7 +32,11 @@ public class CustomerServiceImpl implements CustomerService {
 
         final Address address = customer.getAddresses().get(0);
         address.setCustomer(customer);
+
+
+
         addressRepository.save(address);
+
         return customer;
     }
     public void deleteCustomer(final Long id) {
