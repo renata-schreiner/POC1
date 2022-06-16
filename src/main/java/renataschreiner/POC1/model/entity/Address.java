@@ -3,6 +3,7 @@ package renataschreiner.POC1.model.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name = "TB_ADRESS")
@@ -17,7 +18,7 @@ public class Address {
     private String cidade;
     private String rua;
     private Integer numero;
-
+    private Boolean isPrimary;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "customer_id")
@@ -27,13 +28,15 @@ public class Address {
     public Address() {
     }
 
-    public Address(Long id, Integer cep, String estado, String cidade, String rua, Integer numero,  Customer customer) {
+
+    public Address(Long id, Integer cep, String estado, String cidade, String rua, Integer numero, Boolean isPrimary, Customer customer) {
         this.id = id;
         this.cep = cep;
         this.estado = estado;
         this.cidade = cidade;
         this.rua = rua;
         this.numero = numero;
+        this.isPrimary = isPrimary;
         this.customer = customer;
     }
 
@@ -83,6 +86,14 @@ public class Address {
 
     public void setNumero(Integer numero) {
         this.numero = numero;
+    }
+
+    public Boolean getPrimary() {
+        return isPrimary;
+    }
+
+    public void setPrimary(Boolean primary) {
+        isPrimary = primary;
     }
 
     public Customer getCustomer() {
