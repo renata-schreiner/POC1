@@ -28,14 +28,14 @@ public class AddressController {
     }
 
     @PostMapping(path = "/{id}")
-    public ResponseEntity<Address> newAddress1(@RequestBody Address address, @PathVariable Long id) {
+    public ResponseEntity<Address> newAddress1(@RequestBody final Address address, @PathVariable Long id) {
         Address newAddress = addressService.newAddressWithCustomerId(address, id);
         return ResponseEntity.status(HttpStatus.CREATED).body(newAddress);
     }
 
 
     @DeleteMapping(path = "/{id}")
-    public @ResponseBody ResponseEntity deleteAddress(@PathVariable Long id) {
+    public @ResponseBody ResponseEntity deleteAddress(@PathVariable final Long id) {
         addressService.deleteAddress(id);
         return ResponseEntity.ok().build();
     }
@@ -46,7 +46,7 @@ public class AddressController {
     }
 
     @GetMapping(path = "/{id}")
-    public Optional<Address> getAddressById(@PathVariable Long id) {
+    public Optional<Address> getAddressById(@PathVariable final Long id) {
         return addressService.getAddressById(id);
     }
 

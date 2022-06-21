@@ -17,7 +17,7 @@ public class AddressServiceImpl implements AddressService {
 
     private final CustomerRepository customerRepository;
 
-    public AddressServiceImpl(AddressRepository addressRepository, CustomerRepository customerRepository) {
+    public AddressServiceImpl(final AddressRepository addressRepository, final CustomerRepository customerRepository) {
         this.addressRepository = addressRepository;
         this.customerRepository = customerRepository;
     }
@@ -28,7 +28,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
 
-    public Address newAddressWithCustomerId(Address address, Long id) {
+    public Address newAddressWithCustomerId(final Address address, final Long id) {
         Customer customer = customerRepository.getById(id);
 
         if (address.getPrimary() == true) {
@@ -44,11 +44,11 @@ public class AddressServiceImpl implements AddressService {
         addressRepository.deleteById(id);
     }
 
-    public Iterable<Address> getAddress() {
+    public final Iterable<Address> getAddress() {
         return addressRepository.findAll();
     }
 
-    public Optional<Address> getAddressById(Long id) {
+    public final Optional<Address> getAddressById(final Long id) {
         return addressRepository.findById(id);
     }
 

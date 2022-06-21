@@ -17,7 +17,7 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final AddressRepository addressRepository;
 
-    public CustomerServiceImpl(CustomerRepository customerRepository, AddressRepository addressRepository) {
+    public CustomerServiceImpl(final CustomerRepository customerRepository, final AddressRepository addressRepository) {
         this.customerRepository = customerRepository;
         this.addressRepository = addressRepository;
     }
@@ -43,11 +43,11 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.deleteById(id);
     }
 
-    public Iterable<Customer> getCustomer() {
+    public final Iterable<Customer> getCustomer() {
         return customerRepository.findAll();
     }
 
-    public Optional<Customer> getCustomerById(Long id) {
+    public final Optional<Customer> getCustomerById(final Long id) {
         return customerRepository.findById(id);
     }
 
