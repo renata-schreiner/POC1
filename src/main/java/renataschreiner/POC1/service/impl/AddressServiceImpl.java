@@ -44,11 +44,11 @@ public class AddressServiceImpl implements AddressService {
         addressRepository.deleteById(id);
     }
 
-    public final Iterable<Address> getAddress() {
+    public Iterable<Address> getAddress() {
         return addressRepository.findAll();
     }
 
-    public final Optional<Address> getAddressById(final Long id) {
+    public Optional<Address> getAddressById(final Long id) {
         return addressRepository.findById(id);
     }
 

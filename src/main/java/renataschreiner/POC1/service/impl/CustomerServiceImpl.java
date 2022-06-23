@@ -43,11 +43,11 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.deleteById(id);
     }
 
-    public final Iterable<Customer> getCustomer() {
+    public Iterable<Customer> getCustomer() {
         return customerRepository.findAll();
     }
 
-    public final Optional<Customer> getCustomerById(final Long id) {
+    public Optional<Customer> getCustomerById(final Long id) {
         return customerRepository.findById(id);
     }
 
