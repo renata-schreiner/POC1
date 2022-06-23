@@ -2,6 +2,10 @@ package renataschreiner.POC1.model.entity;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +17,21 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @Size (max = 30)
     private String name;
+
+    @Min(value = 12) //porque sim
     private Integer age;
 
+    @Email
     private String email;
 
+    @Size(min = 11, max = 14)
     private String cpf_cnpj;
 
     private String type;
-
 
     @OneToMany(mappedBy = "customer")
     private List<Address> addresses = new ArrayList<>();
