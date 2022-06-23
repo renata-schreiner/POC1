@@ -3,7 +3,10 @@ package renataschreiner.POC1.model.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Optional;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 
 @Entity
 @Table(name = "TB_ADRESS")
@@ -13,11 +16,16 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
+    @Min(8)
     private Integer cep;
     private String estado;
     private String cidade;
     private String rua;
+
+    @NotBlank
     private Integer numero;
+    @NotEmpty
     private Boolean isPrimary;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
