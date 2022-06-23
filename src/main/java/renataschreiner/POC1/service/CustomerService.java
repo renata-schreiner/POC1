@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface CustomerService {
 
-    Customer newCustomer(Customer customer);
+    Customer newCustomer(final Customer customer);
 
     void deleteCustomer(final Long id);
 

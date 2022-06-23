@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface AddressService {
 
-    Address newAddress(Address address);
+    Address newAddress(final Address address);
     void deleteAddress(final Long id);
 
     Iterable<Address> getAddress();
