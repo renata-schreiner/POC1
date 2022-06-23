@@ -28,8 +28,8 @@ public class AddressController {
     }
 
     @PostMapping(path = "/{id}")
-    public ResponseEntity<Address> newAddress1(@RequestBody final Address address, @PathVariable Long id) {
-        Address newAddress = addressService.newAddressWithCustomerId(address, id);
+    public ResponseEntity<Address> newAddressWithCostumerId(@RequestBody final Address address, @PathVariable final Long id) {
+        final Address newAddress = addressService.newAddressWithCustomerId(address, id);
         return ResponseEntity.status(HttpStatus.CREATED).body(newAddress);
     }
 

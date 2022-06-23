@@ -29,10 +29,10 @@ public class AddressServiceImpl implements AddressService {
 
 
     public Address newAddressWithCustomerId(final Address address, final Long id) {
-        Customer customer = customerRepository.getById(id);
+        final Customer customer = customerRepository.getById(id);
 
         if (address.getPrimary() == true) {
-            verificaSeOpcional(customer);
+            verificaSePrincipal(customer);
         }
 
         address.setCustomer(customer);
@@ -52,12 +52,12 @@ public class AddressServiceImpl implements AddressService {
         return addressRepository.findById(id);
     }
 
-    private void verificaSeOpcional(Customer customer) {
+    private void verificaSePrincipal(Customer customer) {
         customer = customerRepository.getById(customer.getId());
 
-        for (Address x : customer.getAddresses()) {
-            if (x.getPrimary() == true) {
-                x.setPrimary(false);
+        for (Address address : customer.getAddresses()) {
+            if (address.getPrimary() == true) {
+                address.setPrimary(false);
             }
         }
     }
